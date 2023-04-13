@@ -32,7 +32,7 @@ Above: One of the Wavenet's dilated conv stacks
 
 For the Neural Nets, we have gotten mixed results. So far, the spectrogram-based models work best, attaining a final training (Cross-Entropy) loss of .257 anda final test loss of .344. To account for this, we have created a new model that uses batch norm and more dropotu layers, but we have yet to find hyperparameters for this architecture that converge to an effective solution. The audio-only network, on the other hand does not perform well yet due to difficulties with adjusting the parameters and architecture for this model, as it was originally intended for use in applying transformations to audio rather than classifying it. As a result, while we have gotten these models to start training, they have yet to converge to a satisfactory result. 
 
-1[](spec_loss.png)
+![](spec_loss.png)
 
 ## Discussion
 
