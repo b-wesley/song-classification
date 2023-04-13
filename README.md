@@ -20,9 +20,17 @@ The GTZAN dataset contains 10,000 30-second audio files from 10 different genres
 
 For the neural networks, we tested a feedforward convolutional network with various numbers of convolutional layers, filter counts, and regularization over a range of learning rates and numbers of pochs. For the audio, we used a WaveNet inspired by DeepMind's 2018 paper of the same name due to its efficacy at extracting data from audio files (trying various numbers of convolutional/residual blocks, dilation depths, and learning rates). To train these models, we initially developed on our local machines to setup the models, and once they were capable of successfully training for 3 epochs, we used Google Colab to perform the full hyperparameter search to find regions where a good learning rate and other hyperparameters may lie.  
 
+![](wavenet_res_block.png)
+
+Above: the structure of one of the residual blocks in a WaveNet
+
+![](wave_net_conv.png)
+
+Above: One of the Wavenet's dilated conv stacks 
+
 ## Results
 
-For the Neural Nets, we have gotten mixed results. So far, the spectrogram-based models work best, attaining a training loss of LOSS HERE, though overfitting slightly. To account for this, we have created a new model that uses batch norm and more dropotu layers, but we have yet to find hyperparameters for this architecture that converge to an effective solution. The audio-only network, on the other hand does not perform well yet due to difficulties with adjusting the parameters and architecture for this model, as it was originally intended for use in applying transformations to audio rather than classifying it. As a result, while we have gotten these models to start training, they have yet to converge to a satisfactory result. 
+For the Neural Nets, we have gotten mixed results. So far, the spectrogram-based models work best, attaining a final training (Cross-Entropy) loss of .257 anda final test loss of .344. To account for this, we have created a new model that uses batch norm and more dropotu layers, but we have yet to find hyperparameters for this architecture that converge to an effective solution. The audio-only network, on the other hand does not perform well yet due to difficulties with adjusting the parameters and architecture for this model, as it was originally intended for use in applying transformations to audio rather than classifying it. As a result, while we have gotten these models to start training, they have yet to converge to a satisfactory result. 
 
 ## Discussion
 
