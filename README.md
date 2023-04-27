@@ -52,3 +52,6 @@ The spectrogram models were very successful at this task, attaining a test accur
 
 # References
 WaveNet: A Generative Model for Raw Audio https://arxiv.org/pdf/1609.03499.pdf
+
+Takuya Akiba, Shotaro Sano, Toshihiko Yanase, Takeru Ohta,and Masanori Koyama. 2019.
+Optuna: A Next-generation Hyperparameter Optimization Framework. In KDD.
