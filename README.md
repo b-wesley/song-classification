@@ -45,7 +45,9 @@ For the audio data, we created two types of networks: a simple 1-Dimensional CNN
 
 ## Discussion
 
-Though the neural nets do not perform as desired yet, this is simply an issue of further tuning and re-designing. The spectrogram models already are capable of learning the desired function, we now just need to tweak the models so that they train without overfitting. The audio models, while currently failing to predict correctly, are likely not working well due to the fact that this architecture was not initially intended for classification, so adapting it for this purpose will likely need further tweaking to adjust the model to properly extract features before classification. 
+The spectrogram models were very successful at this task, attaining a test accuracy of 0.9. The audio models did not work as well as hoped, though this was not exceptionally unexpected since they are very computationally expensive, and to use hyperparameters that may be successful with this type of neural network would require computational resources greater than we had access to for this project. Despite the lack of great success in the audio models, our most successful 1d convolutional model attained a test accuracy of .24, which is better than randomly guessing, though not as good as the predictions from the spectrogram model.
+
+# References
 
 The statistical models are a promising option and have provided a high-accuracy way of classification. The only issue is that they are based on metrics that have to be calculated. this has to be done either manually or by another machine learning model, which begs the question: why not just train the model to do the classification directly? If there becomes a standardized way of calculating these features from sound bytes, then this approach is a quick and fairly accurate way of determining the genre of any sound.
 
