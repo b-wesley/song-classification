@@ -1,7 +1,7 @@
 # song-classification
 
 ## Abstract:
-In this project, we seek to classify the genres of songs using the GTZAN dataset. Our approach relies on a variety of methods, divided into two groups based on the different facets of the dataset. We performed a variety of statistical methods on the features derived from the audio data provided in the data set including random forest and K-Nearest neighbors classifiers. The dataset also contains audiofiles and their corresponding spectrograms, for which we used two different classes of neural networks to predict the genres of the songs. For the feature-based models, the K-NN algorithm provided the greatest accuracy with a test F1 score of 0.914 on the larger dataset. !!Results!!
+In this project, we seek to classify the genres of songs using the GTZAN dataset. Our approach relies on a variety of methods, divided into two groups based on the different facets of the dataset. We performed a variety of statistical methods on the features derived from the audio data provided in the data set including random forest and K-Nearest neighbors classifiers. The dataset also contains audiofiles and their corresponding spectrograms, for which we used two different classes of neural networks to predict the genres of the songs. For the feature-based models, the K-NN algorithm provided the greatest accuracy with a test F1 score of 0.914 on the larger dataset.
 
 ## Introduction
 Audio and music data is very unique in the world of machine learning, as it can be represented in several ways. Any audio can be represented either through a raw audio file (wave, mp3, aif, etc.) or a spectrogram. Music in particular can also be represented via midi, allowing this type of data to take advantage of models designed for NLP. Additionally, other features about the audio can be derived and used to make predictions about the audio without even directly using the audio or spectrogram. 
@@ -45,11 +45,10 @@ For the audio data, we created two types of networks: a simple 1-Dimensional CNN
 
 ## Discussion
 
+The statistical models are a promising option and have provided a high-accuracy way of classification. The only issue is that they are based on metrics that have to be calculated. this has to be done either manually or by another machine learning model, which begs the question: why not just train the model to do the classification directly? If there becomes a standardized way of calculating these features from sound bytes, then this approach is a quick and fairly accurate way of determining the genre of any sound.
+
 The spectrogram models were very successful at this task, attaining a test accuracy of 0.9. The audio models did not work as well as hoped, though this was not exceptionally unexpected since they are very computationally expensive, and to use hyperparameters that may be successful with this type of neural network would require computational resources greater than we had access to for this project. Despite the lack of great success in the audio models, our most successful 1d convolutional model attained a test accuracy of .24, which is better than randomly guessing, though not as good as the predictions from the spectrogram model.
 
-# References
-
-The statistical models are a promising option and have provided a high-accuracy way of classification. The only issue is that they are based on metrics that have to be calculated. this has to be done either manually or by another machine learning model, which begs the question: why not just train the model to do the classification directly? If there becomes a standardized way of calculating these features from sound bytes, then this approach is a quick and fairly accurate way of determining the genre of any sound.
 
 # References
 WaveNet: A Generative Model for Raw Audio https://arxiv.org/pdf/1609.03499.pdf
