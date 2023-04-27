@@ -20,6 +20,8 @@ For the Statistical models, each of the csv files (3 and 30 second) were ran thr
 
 For the neural networks, we tested a feedforward convolutional network with various numbers of convolutional layers, filter counts, and regularization over a range of learning rates and numbers of pochs. For the audio, we used a WaveNet inspired by DeepMind's 2018 paper of the same name due to its efficacy at extracting data from audio files (trying various numbers of convolutional/residual blocks, dilation depths, and learning rates). To train these models, we initially developed on our local machines to setup the models, and once they were capable of successfully training for 3 epochs, we used Google Colab to perform the full hyperparameter search to find regions where a good learning rate and other hyperparameters may lie.  
 
+Additionally, we split the 30-second audio files into 3-second snippets corresponding to the 3 second data provided in the dataset, and also genreated the corresponding spectrograms. The use of this data did not provide much improvement in accuracy and took significantly longer to train due to the increased number of samples.
+
 ![](wavenet_res_block.png)
 
 Above: the structure of one of the residual blocks in a WaveNet
@@ -34,7 +36,9 @@ In the Random Forest the 3 second snippet data, unsuprisingly, performed better 
 
 ![]()
 
-For the Neural Nets, we have gotten mixed results. So far, the spectrogram-based models work best, attaining a final training (Cross-Entropy) loss of .257 anda final test loss of .344. To account for this, we have created a new model that uses batch norm and more dropotu layers, but we have yet to find hyperparameters for this architecture that converge to an effective solution. The audio-only network, on the other hand does not perform well yet due to difficulties with adjusting the parameters and architecture for this model, as it was originally intended for use in applying transformations to audio rather than classifying it. As a result, while we have gotten these models to start training, they have yet to converge to a satisfactory result. 
+For the Neural Nets, we have gotten mixed results. The spectrogram-based CNN works quite well, attaining a test accuracy of .9, a final training (Cross-Entropy) loss of .257 and a final test loss of .344. We attempted to find an architecture that could account for some of the overfitting we saw, but none performed better than the model with slight overfitting with a test accuracy of .9, which is still quite good. 
+
+For the audio data, we created two types of networks: a simple 1-Dimensional CNN and a WaveNet. Neither of these networks performed nearly as well as the spectrogram models, with the WaveNet never converging, and the 1d CNN obtaining a best test accuracy of .24, only slightly better than random guessing. This is most likely because the networks cannot detect major features pertaining to genre with the size of kernels we had to use due to computational constraints. The Wavenet's lack of success is likely due to the fact that its structure is originally intended to apply effects to the audio (such as reverberation or emulation of an amplifier), but the long-term structure that this model uses to preserve subtle spectral qualities does not translate as well to the high-level characteristics needed to classify genre as we had hoped it would. These models may work with larger kernels and larger dilations, but they are prohibitively computationally expensive to be of use to us with our current technical limitations.
 
 ![](spec_loss.png)
 
